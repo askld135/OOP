@@ -1,27 +1,89 @@
 import numpy as np
-import cv2 as cv
-from cv2 import aruco
-import datetime
+import cv2
+import time
  
-cap = cv2.VideoCapture(0)
- 
-while(True):
-    ret, frame = cap.read()
-    gray = cv.cvtColor(frame, cv.COLOR_BGR2GRAY)
-    aruco_dict = cv.aruco.Dictionary_get(cv.aruco.DICT_6X6_250)
-    parameters = cv.aruco.DetectorParameters_create()
-    corners, ids, rejectedImgPoints = cv.aruco.detectMarkers(gray, aruco_dict, parameters=parameters)
-    print(corners, ids)
-    detect = aruco.drawDetectedMarkers(frame, corners, ids)
- 
-    timestamp = datetime.datetime.now()
-    ts = timestamp.strftime("%A %d %B %Y %I:%M:%S%p")
-    cv.putText(detect, ts, (10, 20),
-    # cv2.putText(detect, ts, (10, detect.shape[0] - 10),
-        cv.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 255), 1)
+ARUCO_DICT = {
+    "DICT_4X4_50" : cv2.aruco.DICT_4X4_50,
+    "DICT_4X4_100" : cv2.aruco.DICT_4X4_100,
+    "DICT_4X4_250" : cv2.aruco.DICT_4X4_250,
+    "DICT_4X4_1000" : cv2.aruco.DICT_4X4_1000,
+    "DICT_5X5_50" : cv2.aruco.DICT_5X5_50,
+    "DICT_5X5_100" : cv2.aruco.DICT_5X5_100,
+    "DICT_5X5_250" : cv2.aruco.DICT_5X5_250,
+    "DICT_5X5_1000" : cv2.aruco.DICT_5X5_1000,
+    "DICT_6X6_50" : cv2.aruco.DICT_6X6_50,
+    "DICT_6X6_100" : cv2.aruco.DICT_6X6_100,
+    "DICT_6X6_250" : cv2.aruco.DICT_6X6_250,
+    "DICT_6X6_1000" : cv2.aruco.DICT_6X6_1000,
+    "DICT_7X7_50" : cv2.aruco.DICT_7X7_50,
+    "DICT_7X7_100" : cv2.aruco.DICT_7X7_100,
+    "DICT_7X7_250" : cv2.aruco.DICT_7X7_250,
+    "DICT_7X7_1000" : cv2.aruco.DICT_7X7_1000,
+    "DICT_ARUCO_ORIGINAL" : cv2.aruco.DICT_ARUCO_ORIGINAL,
+    "DICI_APRILTAG_16h5" : cv2.aruco.DICT_APRILTAG_16h5,
+    "DICI_APRILTAG_25h9" : cv2.aruco.DICT_APRILTAG_25h9,
+    "DICI_APRILTAG_36h10" : cv2.aruco.DICT_APRILTAG_36h10,
+    "DICI_APRILTAG_36h11" : cv2.aruco.DICT_APRILTAG_36h11
+    }
 
-    cv.imshow('Detected Aruco Markers', detect)
-    if cv2.waitKey(1) & 0xFF == ord('q'):
+def aruco_display(corners, ids, rejected, image):
+    if len(corners) > 0:
+        ids = ids.flatten()
+        
+        for (markerConer, markerID) in zip(corners, ids):
+            corners = markerConer.reshape((4,2))
+            (topLeft, topRight, bottomRight, bottomLeft) = corners
+            
+            topRight = (int(topRight[0]), int(topRight[1]))
+            bottomRight = (int(bottomRight[0]), int(bottomRight[1]))
+            bottomLeft = (int(bottomLeft[0]), int(bottomLeft[1]))
+            topLeft = (int(topLeft[0]), int(topLeft[1]))
+            
+            cv2.line(image, topLeft, topRight, (0, 255, 0), 2)
+            cv2.line(image, topRight, bottomRight, (0, 255, 0), 2)
+            cv2.line(image, bottomRight, bottomLeft, (0, 255, 0), 2)
+            cv2.line(image, bottomLeft, topLeft, (0, 255, 0), 2)
+            
+            cX = int((topLeft[0] + bottomRight[0]) / 2.0)
+            cY = int((topLEft[1] + bottomRight[1]) / 2.0)
+            cv2.circle(image, (cX, cY), 4, (0, 0, 255), -1)
+            
+            cv2.putText(image, str(markerID), (topLeft[0], topLeft[1] -10), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 2)
+            print("[Inference] ArUco marker ID: {}".format(markerID))
+            
+            return image
+
+aruco_type = "DICT_5X5_100"
+
+dictionary = cv2.aruco.getPredefinedDictionary(ARUCO_DICT[aruco_type])
+arucoParams = cv2.aruco.DetectorParameters()
+detector = cv2.aruco.ArucoDetector(dictionary, arucoParams)
+
+cap = cv2.VideoCapture(0)
+
+cap.set(cv2.CAP_PROP_FRAME_WIDTH, 1280)
+cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 720)
+
+while cap.isOpened():
+    ret, img = cap.read()
+    h, w, _ = img.np.shape
+    
+    width = 1000
+    height = int(width * (h / w))
+    img = cv2.resize(img, (width, height), interpolation = cv2.INTER_CUBIC)
+    
+    # corners, ids, rejected = cv2.aruco.detectMarkers(img, dictionary, parameters = arucoParams)
+    corners, ids, rejected = detector.detectMarkers(img)
+    
+    detected_markers = aruco_display(corners, ids, rejected, img)
+    
+    cv2. imshow("Image", detected_markers)
+    
+    key = cv2.waitKey(1) & 0xFF
+    
+    if key ==ord("q"):
         break
+
+cv2.destroyAllWindows()
 cap.release()
-cv.destroyAllWindows()      #실행시킨 창을 닫음
+# https://blog.naver.com/seeker0503/222995542358 참고
