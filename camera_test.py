@@ -1,7 +1,7 @@
-import numpy as np
 import cv2
-import time
- 
+import numpy as np
+import time, sys, os
+
 ARUCO_DICT = {
     "DICT_4X4_50" : cv2.aruco.DICT_4X4_50,
     "DICT_4X4_100" : cv2.aruco.DICT_4X4_100,
@@ -45,7 +45,7 @@ def aruco_display(corners, ids, rejected, image):
             cv2.line(image, bottomLeft, topLeft, (0, 255, 0), 2)
             
             cX = int((topLeft[0] + bottomRight[0]) / 2.0)
-            cY = int((topLEft[1] + bottomRight[1]) / 2.0)
+            cY = int((topLeft[1] + bottomRight[1]) / 2.0)
             cv2.circle(image, (cX, cY), 4, (0, 0, 255), -1)
             
             cv2.putText(image, str(markerID), (topLeft[0], topLeft[1] -10), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 2)
@@ -66,24 +66,15 @@ cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 720)
 
 while cap.isOpened():
     ret, img = cap.read()
-    h, w, _ = img.np.shape
-    
+    h, w, c = img.shape
+
     width = 1000
     height = int(width * (h / w))
     img = cv2.resize(img, (width, height), interpolation = cv2.INTER_CUBIC)
     
     # corners, ids, rejected = cv2.aruco.detectMarkers(img, dictionary, parameters = arucoParams)
     corners, ids, rejected = detector.detectMarkers(img)
-    
-    detected_markers = aruco_display(corners, ids, rejected, img)
-    
-    cv2. imshow("Image", detected_markers)
-    
-    key = cv2.waitKey(1) & 0xFF
-    
-    if key ==ord("q"):
-        break
+    cv2.imshow("camera_test", img)
 
-cv2.destroyAllWindows()
 cap.release()
-# https://blog.naver.com/seeker0503/222995542358 참고
+cv2.destroyAllWindows()
