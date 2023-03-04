@@ -1,0 +1,402 @@
+[
+    {
+        "label": "is_low_contrast",
+        "importPath": "skimage.exposure",
+        "description": "skimage.exposure",
+        "isExtraImport": true,
+        "detail": "skimage.exposure",
+        "documentation": {}
+    },
+    {
+        "label": "numpy",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "numpy",
+        "description": "numpy",
+        "detail": "numpy",
+        "documentation": {}
+    },
+    {
+        "label": "cv2",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "cv2",
+        "description": "cv2",
+        "detail": "cv2",
+        "documentation": {}
+    },
+    {
+        "label": "Contrast",
+        "importPath": "adjust_contrast",
+        "description": "adjust_contrast",
+        "isExtraImport": true,
+        "detail": "adjust_contrast",
+        "documentation": {}
+    },
+    {
+        "label": "Contrast",
+        "importPath": "adjust_contrast",
+        "description": "adjust_contrast",
+        "isExtraImport": true,
+        "detail": "adjust_contrast",
+        "documentation": {}
+    },
+    {
+        "label": "imutils",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "imutils",
+        "description": "imutils",
+        "detail": "imutils",
+        "documentation": {}
+    },
+    {
+        "label": "VideoStream",
+        "importPath": "imutils.video",
+        "description": "imutils.video",
+        "isExtraImport": true,
+        "detail": "imutils.video",
+        "documentation": {}
+    },
+    {
+        "label": "VideoStream",
+        "importPath": "imutils.video",
+        "description": "imutils.video",
+        "isExtraImport": true,
+        "detail": "imutils.video",
+        "documentation": {}
+    },
+    {
+        "label": "time",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "time",
+        "description": "time",
+        "detail": "time",
+        "documentation": {}
+    },
+    {
+        "label": "argparse",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "argparse",
+        "description": "argparse",
+        "detail": "argparse",
+        "documentation": {}
+    },
+    {
+        "label": "sys",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "sys",
+        "description": "sys",
+        "detail": "sys",
+        "documentation": {}
+    },
+    {
+        "label": "time,",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "time.",
+        "description": "time.",
+        "detail": "time.",
+        "documentation": {}
+    },
+    {
+        "label": "Contrast",
+        "kind": 6,
+        "importPath": "Detecting-Aruco-Markers.adjust_contrast",
+        "description": "Detecting-Aruco-Markers.adjust_contrast",
+        "peekOfCode": "class Contrast:\n    def __init__(self):\n        self.gamma = 2.0\n        self.image = None\n        self.adjusted = None\n    def adjust_brightness(self, image):\n        self.image = image\n        # check to see if the frame is of low contrast\n        # and apply adjust_gamma function on each frame\n        # and return the frame",
+        "detail": "Detecting-Aruco-Markers.adjust_contrast",
+        "documentation": {}
+    },
+    {
+        "label": "adjust_gamma",
+        "kind": 2,
+        "importPath": "Detecting-Aruco-Markers.adjust_contrast",
+        "description": "Detecting-Aruco-Markers.adjust_contrast",
+        "peekOfCode": "def adjust_gamma(image, gamma):\n    # build a look up table mapping the pixel values [0, 255] to their adjusted gamma values\n    invGamma = 1.0/gamma\n    table = np.array([((i / 255.0) ** invGamma) * 255 for i in np.arange(0, 256)]).astype(\"uint8\")\n    # apply Gamma correction using the lookup table\n    return cv.LUT(image, table)\nclass Contrast:\n    def __init__(self):\n        self.gamma = 2.0\n        self.image = None",
+        "detail": "Detecting-Aruco-Markers.adjust_contrast",
+        "documentation": {}
+    },
+    {
+        "label": "ARUCO_DICT",
+        "kind": 5,
+        "importPath": "Detecting-Aruco-Markers.automatically_detecting_aruco_markers",
+        "description": "Detecting-Aruco-Markers.automatically_detecting_aruco_markers",
+        "peekOfCode": "ARUCO_DICT = {\n    \"DICT_4X4_50\": cv.aruco.DICT_4X4_50,\n    \"DICT_4X4_100\": cv.aruco.DICT_4X4_100,\n    \"DICT_4X4_250\": cv.aruco.DICT_4X4_250,\n    \"DICT_4X4_1000\": cv.aruco.DICT_4X4_1000,\n    \"DICT_5X5_50\": cv.aruco.DICT_5X5_50,\n    \"DICT_5X5_100\": cv.aruco.DICT_5X5_100,\n    \"DICT_5X5_250\": cv.aruco.DICT_5X5_250,\n    \"DICT_5X5_1000\": cv.aruco.DICT_5X5_1000,\n    \"DICT_6X6_50\": cv.aruco.DICT_6X6_50,",
+        "detail": "Detecting-Aruco-Markers.automatically_detecting_aruco_markers",
+        "documentation": {}
+    },
+    {
+        "label": "image",
+        "kind": 5,
+        "importPath": "Detecting-Aruco-Markers.automatically_detecting_aruco_markers",
+        "description": "Detecting-Aruco-Markers.automatically_detecting_aruco_markers",
+        "peekOfCode": "image = Contrast()\n# initialize the video stream and allow the camera sensor to warm up\nprint(\"[INFO] intializing video stream\")\nvs = VideoStream(src=0).start()\ntime.sleep(2.0)\n# loop over the frames of the video\nwhile True:\n    # grab the frame from the threaded video stream and resize it to have a minimum\n    # width of 600\n    frame = vs.read()",
+        "detail": "Detecting-Aruco-Markers.automatically_detecting_aruco_markers",
+        "documentation": {}
+    },
+    {
+        "label": "vs",
+        "kind": 5,
+        "importPath": "Detecting-Aruco-Markers.automatically_detecting_aruco_markers",
+        "description": "Detecting-Aruco-Markers.automatically_detecting_aruco_markers",
+        "peekOfCode": "vs = VideoStream(src=0).start()\ntime.sleep(2.0)\n# loop over the frames of the video\nwhile True:\n    # grab the frame from the threaded video stream and resize it to have a minimum\n    # width of 600\n    frame = vs.read()\n    frame = imutils.resize(frame, width=600)\n    frame = image.adjust_brightness(frame)\n    # loop over the types of Aruco dictionaries",
+        "detail": "Detecting-Aruco-Markers.automatically_detecting_aruco_markers",
+        "documentation": {}
+    },
+    {
+        "label": "image",
+        "kind": 5,
+        "importPath": "Detecting-Aruco-Markers.detect_aruco_marker_video",
+        "description": "Detecting-Aruco-Markers.detect_aruco_marker_video",
+        "peekOfCode": "image = Contrast()\n# construct an argparse to parse the arguments\nap = argparse.ArgumentParser()\nap.add_argument(\"-t\", \"--type\", default=\"DICT_ARUCO_ORIGINAL\", help=\"Aruco tag type to detect\", type=str)\nargs = vars(ap.parse_args())\n# defines name of each possible Aruco tag opencv supports\nARUCO_DICT = {\n    \"DICT_4X4_50\": cv.aruco.DICT_4X4_50,\n    \"DICT_4X4_100\": cv.aruco.DICT_4X4_100,\n    \"DICT_4X4_250\": cv.aruco.DICT_4X4_250,",
+        "detail": "Detecting-Aruco-Markers.detect_aruco_marker_video",
+        "documentation": {}
+    },
+    {
+        "label": "ap",
+        "kind": 5,
+        "importPath": "Detecting-Aruco-Markers.detect_aruco_marker_video",
+        "description": "Detecting-Aruco-Markers.detect_aruco_marker_video",
+        "peekOfCode": "ap = argparse.ArgumentParser()\nap.add_argument(\"-t\", \"--type\", default=\"DICT_ARUCO_ORIGINAL\", help=\"Aruco tag type to detect\", type=str)\nargs = vars(ap.parse_args())\n# defines name of each possible Aruco tag opencv supports\nARUCO_DICT = {\n    \"DICT_4X4_50\": cv.aruco.DICT_4X4_50,\n    \"DICT_4X4_100\": cv.aruco.DICT_4X4_100,\n    \"DICT_4X4_250\": cv.aruco.DICT_4X4_250,\n    \"DICT_4X4_1000\": cv.aruco.DICT_4X4_1000,\n    \"DICT_5X5_50\": cv.aruco.DICT_5X5_50,",
+        "detail": "Detecting-Aruco-Markers.detect_aruco_marker_video",
+        "documentation": {}
+    },
+    {
+        "label": "args",
+        "kind": 5,
+        "importPath": "Detecting-Aruco-Markers.detect_aruco_marker_video",
+        "description": "Detecting-Aruco-Markers.detect_aruco_marker_video",
+        "peekOfCode": "args = vars(ap.parse_args())\n# defines name of each possible Aruco tag opencv supports\nARUCO_DICT = {\n    \"DICT_4X4_50\": cv.aruco.DICT_4X4_50,\n    \"DICT_4X4_100\": cv.aruco.DICT_4X4_100,\n    \"DICT_4X4_250\": cv.aruco.DICT_4X4_250,\n    \"DICT_4X4_1000\": cv.aruco.DICT_4X4_1000,\n    \"DICT_5X5_50\": cv.aruco.DICT_5X5_50,\n    \"DICT_5X5_100\": cv.aruco.DICT_5X5_100,\n    \"DICT_5X5_250\": cv.aruco.DICT_5X5_250,",
+        "detail": "Detecting-Aruco-Markers.detect_aruco_marker_video",
+        "documentation": {}
+    },
+    {
+        "label": "ARUCO_DICT",
+        "kind": 5,
+        "importPath": "Detecting-Aruco-Markers.detect_aruco_marker_video",
+        "description": "Detecting-Aruco-Markers.detect_aruco_marker_video",
+        "peekOfCode": "ARUCO_DICT = {\n    \"DICT_4X4_50\": cv.aruco.DICT_4X4_50,\n    \"DICT_4X4_100\": cv.aruco.DICT_4X4_100,\n    \"DICT_4X4_250\": cv.aruco.DICT_4X4_250,\n    \"DICT_4X4_1000\": cv.aruco.DICT_4X4_1000,\n    \"DICT_5X5_50\": cv.aruco.DICT_5X5_50,\n    \"DICT_5X5_100\": cv.aruco.DICT_5X5_100,\n    \"DICT_5X5_250\": cv.aruco.DICT_5X5_250,\n    \"DICT_5X5_1000\": cv.aruco.DICT_5X5_1000,\n    \"DICT_6X6_50\": cv.aruco.DICT_6X6_50,",
+        "detail": "Detecting-Aruco-Markers.detect_aruco_marker_video",
+        "documentation": {}
+    },
+    {
+        "label": "arucoDict",
+        "kind": 5,
+        "importPath": "Detecting-Aruco-Markers.detect_aruco_marker_video",
+        "description": "Detecting-Aruco-Markers.detect_aruco_marker_video",
+        "peekOfCode": "arucoDict = cv.aruco.Dictionary_get(ARUCO_DICT[args[\"type\"]])\narucoParams = cv.aruco.DetectorParameters_create()\n# initilize the video stream and allow the camera sensor to warm up\nprint(\"[INFO] intializing video stream\")\nvs = VideoStream(src=0).start()\ntime.sleep(2.0)\n# loop over the frames of the video\nwhile True:\n    # grab the frame from the threaded video stream and resize it to have a minimum\n    # width of 1000 and call the adjust brightness from the contrast class on each frame",
+        "detail": "Detecting-Aruco-Markers.detect_aruco_marker_video",
+        "documentation": {}
+    },
+    {
+        "label": "arucoParams",
+        "kind": 5,
+        "importPath": "Detecting-Aruco-Markers.detect_aruco_marker_video",
+        "description": "Detecting-Aruco-Markers.detect_aruco_marker_video",
+        "peekOfCode": "arucoParams = cv.aruco.DetectorParameters_create()\n# initilize the video stream and allow the camera sensor to warm up\nprint(\"[INFO] intializing video stream\")\nvs = VideoStream(src=0).start()\ntime.sleep(2.0)\n# loop over the frames of the video\nwhile True:\n    # grab the frame from the threaded video stream and resize it to have a minimum\n    # width of 1000 and call the adjust brightness from the contrast class on each frame\n    frame = vs.read()",
+        "detail": "Detecting-Aruco-Markers.detect_aruco_marker_video",
+        "documentation": {}
+    },
+    {
+        "label": "vs",
+        "kind": 5,
+        "importPath": "Detecting-Aruco-Markers.detect_aruco_marker_video",
+        "description": "Detecting-Aruco-Markers.detect_aruco_marker_video",
+        "peekOfCode": "vs = VideoStream(src=0).start()\ntime.sleep(2.0)\n# loop over the frames of the video\nwhile True:\n    # grab the frame from the threaded video stream and resize it to have a minimum\n    # width of 1000 and call the adjust brightness from the contrast class on each frame\n    frame = vs.read()\n    frame = imutils.resize(frame, width=1000)\n    frame = image.adjust_brightness(frame)\n    (h, w) = frame.shape[:2]",
+        "detail": "Detecting-Aruco-Markers.detect_aruco_marker_video",
+        "documentation": {}
+    },
+    {
+        "label": "ap",
+        "kind": 5,
+        "importPath": "Detecting-Aruco-Markers.main",
+        "description": "Detecting-Aruco-Markers.main",
+        "peekOfCode": "ap = argparse.ArgumentParser()\nap.add_argument(\"-i\", \"--image\", required=True, help=\"path to input image\", type=str)\nap.add_argument(\"-t\", \"--type\", default=\"DICT_ARUCO_ORIGINAL\", type=str, help=\"type of aruco tag\")\nargs = vars(ap.parse_args())\n# defines name of each possible Aruco tag opencv supports\nARUCO_DICT = {\n        \"DICT_4X4_50\": cv.aruco.DICT_4X4_50,\n        \"DICT_4X4_100\": cv.aruco.DICT_4X4_100,\n        \"DICT_4X4_250\": cv.aruco.DICT_4X4_250,\n        \"DICT_4X4_1000\": cv.aruco.DICT_4X4_1000,",
+        "detail": "Detecting-Aruco-Markers.main",
+        "documentation": {}
+    },
+    {
+        "label": "args",
+        "kind": 5,
+        "importPath": "Detecting-Aruco-Markers.main",
+        "description": "Detecting-Aruco-Markers.main",
+        "peekOfCode": "args = vars(ap.parse_args())\n# defines name of each possible Aruco tag opencv supports\nARUCO_DICT = {\n        \"DICT_4X4_50\": cv.aruco.DICT_4X4_50,\n        \"DICT_4X4_100\": cv.aruco.DICT_4X4_100,\n        \"DICT_4X4_250\": cv.aruco.DICT_4X4_250,\n        \"DICT_4X4_1000\": cv.aruco.DICT_4X4_1000,\n        \"DICT_5X5_50\": cv.aruco.DICT_5X5_50,\n        \"DICT_5X5_100\": cv.aruco.DICT_5X5_100,\n        \"DICT_5X5_250\": cv.aruco.DICT_5X5_250,",
+        "detail": "Detecting-Aruco-Markers.main",
+        "documentation": {}
+    },
+    {
+        "label": "ARUCO_DICT",
+        "kind": 5,
+        "importPath": "Detecting-Aruco-Markers.main",
+        "description": "Detecting-Aruco-Markers.main",
+        "peekOfCode": "ARUCO_DICT = {\n        \"DICT_4X4_50\": cv.aruco.DICT_4X4_50,\n        \"DICT_4X4_100\": cv.aruco.DICT_4X4_100,\n        \"DICT_4X4_250\": cv.aruco.DICT_4X4_250,\n        \"DICT_4X4_1000\": cv.aruco.DICT_4X4_1000,\n        \"DICT_5X5_50\": cv.aruco.DICT_5X5_50,\n        \"DICT_5X5_100\": cv.aruco.DICT_5X5_100,\n        \"DICT_5X5_250\": cv.aruco.DICT_5X5_250,\n        \"DICT_5X5_1000\": cv.aruco.DICT_5X5_1000,\n        \"DICT_6X6_50\": cv.aruco.DICT_6X6_50,",
+        "detail": "Detecting-Aruco-Markers.main",
+        "documentation": {}
+    },
+    {
+        "label": "image",
+        "kind": 5,
+        "importPath": "Detecting-Aruco-Markers.main",
+        "description": "Detecting-Aruco-Markers.main",
+        "peekOfCode": "image = cv.imread(args[\"image\"])\nimage_resize = imutils.resize(image, width=600)\n# verify that the supplied Aruco tag exists and supported by OpenCv\nif ARUCO_DICT.get(args[\"type\"], None) is None:\n    print(\"[INFO] Aruco tag {} is not supported\".format(args[\"type\"]))\n    sys.exit(0)\n# load the Aruco dictionary, grab the Aruco parameters and detect the marker\nprint(\"[INFO] detecting {} tags....\".format(args[\"type\"]))\narucoDict = cv.aruco.Dictionary_get(ARUCO_DICT[args[\"type\"]])\narucoParams = cv.aruco.DetectorParameters_create()",
+        "detail": "Detecting-Aruco-Markers.main",
+        "documentation": {}
+    },
+    {
+        "label": "image_resize",
+        "kind": 5,
+        "importPath": "Detecting-Aruco-Markers.main",
+        "description": "Detecting-Aruco-Markers.main",
+        "peekOfCode": "image_resize = imutils.resize(image, width=600)\n# verify that the supplied Aruco tag exists and supported by OpenCv\nif ARUCO_DICT.get(args[\"type\"], None) is None:\n    print(\"[INFO] Aruco tag {} is not supported\".format(args[\"type\"]))\n    sys.exit(0)\n# load the Aruco dictionary, grab the Aruco parameters and detect the marker\nprint(\"[INFO] detecting {} tags....\".format(args[\"type\"]))\narucoDict = cv.aruco.Dictionary_get(ARUCO_DICT[args[\"type\"]])\narucoParams = cv.aruco.DetectorParameters_create()\n(corners, ids, rejected) = cv.aruco.detectMarkers(image_resize, arucoDict, parameters=arucoParams)",
+        "detail": "Detecting-Aruco-Markers.main",
+        "documentation": {}
+    },
+    {
+        "label": "arucoDict",
+        "kind": 5,
+        "importPath": "Detecting-Aruco-Markers.main",
+        "description": "Detecting-Aruco-Markers.main",
+        "peekOfCode": "arucoDict = cv.aruco.Dictionary_get(ARUCO_DICT[args[\"type\"]])\narucoParams = cv.aruco.DetectorParameters_create()\n(corners, ids, rejected) = cv.aruco.detectMarkers(image_resize, arucoDict, parameters=arucoParams)\n# verify at least if one Aruco Marker was detected\nif len(corners) > 0:\n    # flatten the ARUCO's ids list\n    ids = ids.flatten()\n    # loop over the detected Aruco markers corners\n    for (markerCorner, markerId) in zip(corners, ids):\n        # Extract the corners which are always returned as tl, tr, br and bl",
+        "detail": "Detecting-Aruco-Markers.main",
+        "documentation": {}
+    },
+    {
+        "label": "arucoParams",
+        "kind": 5,
+        "importPath": "Detecting-Aruco-Markers.main",
+        "description": "Detecting-Aruco-Markers.main",
+        "peekOfCode": "arucoParams = cv.aruco.DetectorParameters_create()\n(corners, ids, rejected) = cv.aruco.detectMarkers(image_resize, arucoDict, parameters=arucoParams)\n# verify at least if one Aruco Marker was detected\nif len(corners) > 0:\n    # flatten the ARUCO's ids list\n    ids = ids.flatten()\n    # loop over the detected Aruco markers corners\n    for (markerCorner, markerId) in zip(corners, ids):\n        # Extract the corners which are always returned as tl, tr, br and bl\n        corners = markerCorner.reshape((4, 2))",
+        "detail": "Detecting-Aruco-Markers.main",
+        "documentation": {}
+    },
+    {
+        "label": "aruco_display",
+        "kind": 2,
+        "importPath": "camera_test",
+        "description": "camera_test",
+        "peekOfCode": "def aruco_display(corners, ids, rejected, image):\n    if len(corners) > 0:\n        ids = ids.flatten()\n        for (markerConer, markerID) in zip(corners, ids):\n            corners = markerConer.reshape((4,2))\n            (topLeft, topRight, bottomRight, bottomLeft) = corners\n            topRight = (int(topRight[0]), int(topRight[1]))\n            bottomRight = (int(bottomRight[0]), int(bottomRight[1]))\n            bottomLeft = (int(bottomLeft[0]), int(bottomLeft[1]))\n            topLeft = (int(topLeft[0]), int(topLeft[1]))",
+        "detail": "camera_test",
+        "documentation": {}
+    },
+    {
+        "label": "ARUCO_DICT",
+        "kind": 5,
+        "importPath": "camera_test",
+        "description": "camera_test",
+        "peekOfCode": "ARUCO_DICT = {\n    \"DICT_4X4_50\" : cv2.aruco.DICT_4X4_50,\n    \"DICT_4X4_100\" : cv2.aruco.DICT_4X4_100,\n    \"DICT_4X4_250\" : cv2.aruco.DICT_4X4_250,\n    \"DICT_4X4_1000\" : cv2.aruco.DICT_4X4_1000,\n    \"DICT_5X5_50\" : cv2.aruco.DICT_5X5_50,\n    \"DICT_5X5_100\" : cv2.aruco.DICT_5X5_100,\n    \"DICT_5X5_250\" : cv2.aruco.DICT_5X5_250,\n    \"DICT_5X5_1000\" : cv2.aruco.DICT_5X5_1000,\n    \"DICT_6X6_50\" : cv2.aruco.DICT_6X6_50,",
+        "detail": "camera_test",
+        "documentation": {}
+    },
+    {
+        "label": "aruco_type",
+        "kind": 5,
+        "importPath": "camera_test",
+        "description": "camera_test",
+        "peekOfCode": "aruco_type = \"DICT_5X5_100\"\ndictionary = cv2.aruco.getPredefinedDictionary(ARUCO_DICT[aruco_type])\narucoParams = cv2.aruco.DetectorParameters()\ndetector = cv2.aruco.ArucoDetector(dictionary, arucoParams)\ncap = cv2.VideoCapture(0)\ncap.set(cv2.CAP_PROP_FRAME_WIDTH, 1280)\ncap.set(cv2.CAP_PROP_FRAME_HEIGHT, 720)\nwhile cap.isOpened():\n    ret, img = cap.read()\n    h, w, c = img.shape",
+        "detail": "camera_test",
+        "documentation": {}
+    },
+    {
+        "label": "dictionary",
+        "kind": 5,
+        "importPath": "camera_test",
+        "description": "camera_test",
+        "peekOfCode": "dictionary = cv2.aruco.getPredefinedDictionary(ARUCO_DICT[aruco_type])\narucoParams = cv2.aruco.DetectorParameters()\ndetector = cv2.aruco.ArucoDetector(dictionary, arucoParams)\ncap = cv2.VideoCapture(0)\ncap.set(cv2.CAP_PROP_FRAME_WIDTH, 1280)\ncap.set(cv2.CAP_PROP_FRAME_HEIGHT, 720)\nwhile cap.isOpened():\n    ret, img = cap.read()\n    h, w, c = img.shape\n    width = 1000",
+        "detail": "camera_test",
+        "documentation": {}
+    },
+    {
+        "label": "arucoParams",
+        "kind": 5,
+        "importPath": "camera_test",
+        "description": "camera_test",
+        "peekOfCode": "arucoParams = cv2.aruco.DetectorParameters()\ndetector = cv2.aruco.ArucoDetector(dictionary, arucoParams)\ncap = cv2.VideoCapture(0)\ncap.set(cv2.CAP_PROP_FRAME_WIDTH, 1280)\ncap.set(cv2.CAP_PROP_FRAME_HEIGHT, 720)\nwhile cap.isOpened():\n    ret, img = cap.read()\n    h, w, c = img.shape\n    width = 1000\n    height = int(width * (h / w))",
+        "detail": "camera_test",
+        "documentation": {}
+    },
+    {
+        "label": "detector",
+        "kind": 5,
+        "importPath": "camera_test",
+        "description": "camera_test",
+        "peekOfCode": "detector = cv2.aruco.ArucoDetector(dictionary, arucoParams)\ncap = cv2.VideoCapture(0)\ncap.set(cv2.CAP_PROP_FRAME_WIDTH, 1280)\ncap.set(cv2.CAP_PROP_FRAME_HEIGHT, 720)\nwhile cap.isOpened():\n    ret, img = cap.read()\n    h, w, c = img.shape\n    width = 1000\n    height = int(width * (h / w))\n    img = cv2.resize(img, (width, height), interpolation = cv2.INTER_CUBIC)",
+        "detail": "camera_test",
+        "documentation": {}
+    },
+    {
+        "label": "cap",
+        "kind": 5,
+        "importPath": "camera_test",
+        "description": "camera_test",
+        "peekOfCode": "cap = cv2.VideoCapture(0)\ncap.set(cv2.CAP_PROP_FRAME_WIDTH, 1280)\ncap.set(cv2.CAP_PROP_FRAME_HEIGHT, 720)\nwhile cap.isOpened():\n    ret, img = cap.read()\n    h, w, c = img.shape\n    width = 1000\n    height = int(width * (h / w))\n    img = cv2.resize(img, (width, height), interpolation = cv2.INTER_CUBIC)\n    # corners, ids, rejected = cv2.aruco.detectMarkers(img, dictionary, parameters = arucoParams)",
+        "detail": "camera_test",
+        "documentation": {}
+    },
+    {
+        "label": "ARUCO_DICT",
+        "kind": 5,
+        "importPath": "open_source",
+        "description": "open_source",
+        "peekOfCode": "ARUCO_DICT = {\n    \"DICT_4X4_50\" : cv2.aruco.DICT_4X4_50,\n    \"DICT_4X4_100\" : cv2.aruco.DICT_4X4_100,\n    \"DICT_4X4_250\" : cv2.aruco.DICT_4X4_250,\n    \"DICT_4X4_1000\" : cv2.aruco.DICT_4X4_1000,\n    \"DICT_5X5_50\" : cv2.aruco.DICT_5X5_50,\n    \"DICT_5X5_100\" : cv2.aruco.DICT_5X5_100,\n    \"DICT_5X5_250\" : cv2.aruco.DICT_5X5_250,\n    \"DICT_5X5_1000\" : cv2.aruco.DICT_5X5_1000,\n    \"DICT_6X6_50\" : cv2.aruco.DICT_6X6_50,",
+        "detail": "open_source",
+        "documentation": {}
+    },
+    {
+        "label": "aruco_type",
+        "kind": 5,
+        "importPath": "open_source",
+        "description": "open_source",
+        "peekOfCode": "aruco_type = \"DICT_6X6_250\"\n# Load the predefined dictionary\ndictionary = cv2.aruco.getPredefinedDictionary(ARUCO_DICT[aruco_type])\narucoParams = cv2.aruco.DetectorParameters()\ndetector = cv2.aruco.ArucoDetector(dictionary, arucoParams) \n# Initialize the detector parameters using default values\nparameters =  cv2.aruco.DetectorParameters()\ncap = cv2.VideoCapture(0)\ncap.set(cv2.CAP_PROP_FRAME_WIDTH, 1280)\ncap.set(cv2.CAP_PROP_FRAME_HEIGHT, 720)",
+        "detail": "open_source",
+        "documentation": {}
+    },
+    {
+        "label": "dictionary",
+        "kind": 5,
+        "importPath": "open_source",
+        "description": "open_source",
+        "peekOfCode": "dictionary = cv2.aruco.getPredefinedDictionary(ARUCO_DICT[aruco_type])\narucoParams = cv2.aruco.DetectorParameters()\ndetector = cv2.aruco.ArucoDetector(dictionary, arucoParams) \n# Initialize the detector parameters using default values\nparameters =  cv2.aruco.DetectorParameters()\ncap = cv2.VideoCapture(0)\ncap.set(cv2.CAP_PROP_FRAME_WIDTH, 1280)\ncap.set(cv2.CAP_PROP_FRAME_HEIGHT, 720)\nwhile cap.isOpened():\n    ret, img = cap.read()",
+        "detail": "open_source",
+        "documentation": {}
+    },
+    {
+        "label": "arucoParams",
+        "kind": 5,
+        "importPath": "open_source",
+        "description": "open_source",
+        "peekOfCode": "arucoParams = cv2.aruco.DetectorParameters()\ndetector = cv2.aruco.ArucoDetector(dictionary, arucoParams) \n# Initialize the detector parameters using default values\nparameters =  cv2.aruco.DetectorParameters()\ncap = cv2.VideoCapture(0)\ncap.set(cv2.CAP_PROP_FRAME_WIDTH, 1280)\ncap.set(cv2.CAP_PROP_FRAME_HEIGHT, 720)\nwhile cap.isOpened():\n    ret, img = cap.read()\n    h, w, c = img.shape",
+        "detail": "open_source",
+        "documentation": {}
+    },
+    {
+        "label": "detector",
+        "kind": 5,
+        "importPath": "open_source",
+        "description": "open_source",
+        "peekOfCode": "detector = cv2.aruco.ArucoDetector(dictionary, arucoParams) \n# Initialize the detector parameters using default values\nparameters =  cv2.aruco.DetectorParameters()\ncap = cv2.VideoCapture(0)\ncap.set(cv2.CAP_PROP_FRAME_WIDTH, 1280)\ncap.set(cv2.CAP_PROP_FRAME_HEIGHT, 720)\nwhile cap.isOpened():\n    ret, img = cap.read()\n    h, w, c = img.shape\n    width = 1000",
+        "detail": "open_source",
+        "documentation": {}
+    },
+    {
+        "label": "parameters",
+        "kind": 5,
+        "importPath": "open_source",
+        "description": "open_source",
+        "peekOfCode": "parameters =  cv2.aruco.DetectorParameters()\ncap = cv2.VideoCapture(0)\ncap.set(cv2.CAP_PROP_FRAME_WIDTH, 1280)\ncap.set(cv2.CAP_PROP_FRAME_HEIGHT, 720)\nwhile cap.isOpened():\n    ret, img = cap.read()\n    h, w, c = img.shape\n    width = 1000\n    height = int(width * (h / w))\n    img = cv2.resize(img, (width, height), interpolation = cv2.INTER_CUBIC)",
+        "detail": "open_source",
+        "documentation": {}
+    },
+    {
+        "label": "cap",
+        "kind": 5,
+        "importPath": "open_source",
+        "description": "open_source",
+        "peekOfCode": "cap = cv2.VideoCapture(0)\ncap.set(cv2.CAP_PROP_FRAME_WIDTH, 1280)\ncap.set(cv2.CAP_PROP_FRAME_HEIGHT, 720)\nwhile cap.isOpened():\n    ret, img = cap.read()\n    h, w, c = img.shape\n    width = 1000\n    height = int(width * (h / w))\n    img = cv2.resize(img, (width, height), interpolation = cv2.INTER_CUBIC)\n    # Detect the markers in the image",
+        "detail": "open_source",
+        "documentation": {}
+    }
+]
